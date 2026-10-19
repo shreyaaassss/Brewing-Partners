@@ -267,7 +267,7 @@ p { margin: 0; }
   font-size: 13px;
 }
 .drink-price .price { font-family: var(--font-display); font-weight: 300; font-size: 22px; letter-spacing: -0.02em; }
-.drink-price a { text-decoration: underline; text-underline-offset: 3px; }
+.drink-price a { text-decoration: underline; text-underline-offset: 3px; padding: 12px 0; margin: -12px 0; }
 
 .order-name { font-weight: 500; font-size: 16px; margin-top: 6px; }
 .order-detail { font-size: 14px; margin-top: 2px; }
@@ -449,9 +449,19 @@ p { margin: 0; }
 }
 .quote-by b { display: block; font-weight: 500; }
 .quote-by span { font-size: 14px; color: var(--ink-60); }
-.quote-dots { display: flex; gap: 8px; margin-top: 28px; }
-.quote-dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--hairline); cursor: pointer; }
-.quote-dots button.active { background: var(--color-ink-black); }
+.quote-dots { display: flex; gap: 0; margin: 16px 0 0 -14px; }
+/* 36px tap area around each 8px dot */
+.quote-dots button { position: relative; width: 36px; height: 36px; border: 0; padding: 0; background: none; cursor: pointer; }
+.quote-dots button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--hairline);
+}
+.quote-dots button.active::after { background: var(--color-ink-black); }
 
 /* ---------- Visit ---------- */
 .visit { background: var(--color-olive-grove); color: var(--color-cream-paper); padding: var(--section-y) 0; }
@@ -478,7 +488,17 @@ p { margin: 0; }
   overflow: hidden;
   min-height: 460px;
 }
-.map-card svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-card img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 52% center; /* keep the full logo and sign in frame */
+  transition: transform .6s ease;
+}
+.map-card:hover img { transform: scale(1.03); }
+.map-card .media-badge { left: 20px; bottom: 20px; max-width: 320px; }
+.visit-phone { margin-top: 16px; font-size: 16px; color: rgba(250, 245, 241, 0.8); }
+.visit-phone a { color: var(--color-cream-paper); text-decoration: underline; text-underline-offset: 3px; }
 .map-card .media-badge { color: var(--color-ink-black); }
 
 /* ---------- Newsletter ---------- */
@@ -564,6 +584,7 @@ p { margin: 0; }
   .hero { padding: 72px 0 80px; }
   .hero-grid, .feature-grid, .visit-grid, .quote-card { grid-template-columns: 1fr; }
   .feature-grid { gap: 48px; }
+  .map-card { min-height: 0; aspect-ratio: 4 / 3; }
   .feature-grid.reverse .feature-media, .feature-grid.reverse .space-collage { order: 0; }
   .stage { max-width: 560px; width: 100%; margin: 0 auto; }
   .section-head { flex-direction: column; align-items: flex-start; }
@@ -592,4 +613,13 @@ p { margin: 0; }
   .pizza-media .media-badge .order-name { font-size: 14px; }
   .pizza-media .media-badge .order-detail { font-size: 12px; }
   .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* Smallest phones (iPhone SE, compact Androids): the nav can't fit the
+   logo, "Find us" and the menu button, so "Find us" moves to the menu (Visit) */
+@media (max-width: 400px) {
+  .nav-actions .btn-primary { display: none; }
+  .nav .container { gap: 12px; }
+  .logo { font-size: 20px; gap: 8px; }
+  .logo img { width: 34px; height: 34px; }
 }

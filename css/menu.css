@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Brewing Partners — Menu page
+   Arch-shaped cream "pages" on brand green, echoing the printed menu.
+   ========================================================================== */
+
+.menu-page {
+  background: var(--color-olive-grove);
+  color: var(--color-cream-paper);
+  padding-bottom: 120px;
+}
+
+/* ---------- Header ---------- */
+.menu-hero { padding: 96px 0 56px; }
+.menu-hero .eyebrow { color: rgba(250, 245, 241, 0.6); }
+.menu-hero .display { max-width: 900px; }
+.menu-hero .lead { color: rgba(250, 245, 241, 0.8); margin-top: 32px; }
+
+.legend { display: flex; gap: 24px; margin-top: 32px; font-size: 14px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend .diet { background: var(--color-soft-linen); }
+
+/* ---------- Sticky section tabs ---------- */
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-olive-grove);
+  border-top: 1px solid var(--hairline-dark);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+.tabs-inner {
+  display: flex;
+  gap: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-inner::-webkit-scrollbar { display: none; }
+.tab {
+  flex: none;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(250, 245, 241, 0.3);
+  font-size: 15px;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.tab:hover { border-color: var(--color-cream-paper); }
+.tab.active {
+  background: var(--color-chartreuse-spark);
+  border-color: var(--color-chartreuse-spark);
+  color: var(--color-ink-black);
+}
+
+/* ---------- Arch pages ---------- */
+.arches { display: grid; gap: 64px; padding-top: 64px; }
+.arch {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--color-cream-paper);
+  color: var(--color-ink-black);
+  border-radius: 50% 50% var(--radius-cards) var(--radius-cards) / 240px 240px var(--radius-cards) var(--radius-cards);
+  padding: 120px 72px 72px;
+  text-align: center;
+  scroll-margin-top: 96px;
+}
+.arch .mark { color: inherit; }
+.arch-lockup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+}
+.arch-lockup em { font-style: italic; }
+.arch-lockup span { padding-right: 18px; border-right: 1px solid var(--color-ink-black); line-height: 1.6; }
+.arch-lockup img { width: 64px; height: 64px; }
+.arch .eyebrow { margin-bottom: 16px; }
+.arch-title { margin-bottom: 48px; }
+.arch-sub { margin: 64px 0 24px; }
+
+/* ---------- Items ---------- */
+.m-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  display: grid;
+  column-gap: 64px;
+}
+.m-list.two { grid-template-columns: 1fr 1fr; }
+.m-item {
+  padding: 20px 0;
+  border-top: 1px solid var(--hairline);
+}
+.m-list.compact .m-item { padding: 15px 0; }
+.m-row { display: flex; align-items: baseline; gap: 12px; }
+.m-name {
+  flex: 1;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.m-desc {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--ink-60);
+  max-width: 560px;
+}
+.m-item.has-diet .m-desc { padding-left: 26px; }
+.m-price {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.m-price small { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.04em; color: var(--ink-60); }
+.m-prices { display: flex; flex-direction: column; align-items: flex-end; }
+.m-prices .m-price + .m-price::before { content: none; }
+.m-row > .m-prices { flex-direction: row; gap: 10px; }
+.m-row > .m-prices .m-price + .m-price { padding-left: 10px; border-left: 1px solid var(--hairline); }
+
+/* Add-ons: compact multi-column grid of small name + price pairs */
+.m-list.addons { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+.m-list.addons .m-item { padding: 12px 0; }
+.m-list.addons .m-name { font-size: 15px; font-weight: 400; }
+.m-list.addons .m-price { font-size: 19px; }
+.m-list.addons .m-desc { font-size: 10px; margin-top: 2px; }
+.m-list.addons .m-row > .m-prices { gap: 6px; }
+.m-list.addons .m-row > .m-prices .m-price + .m-price { padding-left: 6px; }
+
+.m-note {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 12px 28px;
+  border: 1.5px solid var(--color-ink-black);
+  border-radius: var(--radius-buttons);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Diet markers (Indian veg / egg / non-veg symbols) ---------- */
+.diet {
+  position: relative;
+  flex: none;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  transform: translateY(1px);
+}
+.diet::after {
+  content: '';
+  position: absolute;
+  inset: 2.5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.diet.veg { color: #2f8a3a; }
+.diet.nonveg { color: var(--color-coral-outline); }
+.diet.egg { color: #d9a21b; border-radius: 50%; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .menu-hero { padding: 72px 0 40px; }
+  .m-list.two { grid-template-columns: 1fr; }
+  .m-list.addons { grid-template-columns: 1fr 1fr; }
+  .arch {
+    padding: 96px 32px 48px;
+    border-radius: 50% 50% var(--radius-cards) var(--radius-cards) / 160px 160px var(--radius-cards) var(--radius-cards);
+  }
+}
+
+@media (max-width: 560px) {
+  .arches { gap: 40px; padding-top: 40px; }
+  .arch {
+    padding: 72px 20px 40px;
+    border-radius: 50% 50% 18px 18px / 100px 100px 18px 18px;
+  }
+  .arch-title { margin-bottom: 32px; }
+  .m-list.addons { grid-template-columns: 1fr; }
+  .m-list.addons .m-item { padding: 10px 0; }
+  .arch-sub { margin-top: 48px; }
+  .m-name { font-size: 16px; }
+  .m-price { font-size: 20px; }
+  .m-desc { padding-left: 0; }
+  .m-item.has-diet .m-desc { padding-left: 26px; }
+  .m-note { padding: 12px 16px; }
+  .legend { flex-wrap: wrap; gap: 16px; }
+}
